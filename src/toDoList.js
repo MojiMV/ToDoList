@@ -1,3 +1,5 @@
+import project from "./project";
+
 const toDoList = function(){
     let projects = [];
 
@@ -7,8 +9,8 @@ const toDoList = function(){
             return;
         }
 
-        let newProject = Project(name);
-        projects.push(createProject(name));
+        let newProject = project(name);
+        projects.push(newProject);
     }
 
     function removeProject(name){
@@ -22,23 +24,28 @@ const toDoList = function(){
     }
 
     function changeProjectName(previousName, newName){
-        if (projects.some(project => project.name === newName)) {
+        if (projects.some(project => project.getName() === newName)) {
             console.log(`Project name "${newName}" already exists. Choose a different name.`);
             return;
         }
 
         projects.forEach(project => {
-            if (project.name == previousName){
-                project.name = newName;
+            if (project.getName() == previousName){
+                project.setName(newName);
                 return;
             }
         })
-    }
+    };
+
+    function showProjects(){
+        return projects;
+    };
 
     return{
         addProject,
         removeProject,
-        changeProjectName
+        changeProjectName,
+        showProjects,
     }
 }
 
