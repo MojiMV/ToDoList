@@ -4,7 +4,7 @@ const toDoList = function(){
     let projects = [];
 
     function addProject(name){
-        if (projects.some(project => project.name == name)){
+        if (projects.some(project => project.getName() == name)){
             console.log("This project name already exists!");
             return;
         }
@@ -14,7 +14,7 @@ const toDoList = function(){
     }
 
     function removeProject(name){
-        let projectIndex = projects.findIndex(project => project.name == name);
+        let projectIndex = projects.findIndex(project => project.getName() == name);
 
         if ( projectIndex == -1){
             console.log("Not found!");

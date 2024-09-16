@@ -1,3 +1,5 @@
+import task from "./task";
+
 const project = function(name){
     function getName(){
         return name;
@@ -10,17 +12,17 @@ const project = function(name){
     let tasks = [];
 
     function addTask(){
-        if (tasks.some(task => task.name == name)){
+        if (tasks.some(task => task.getName() == name)){
             console.log("This task name already exists!");
             return;
         }
     
-        let newTask = Task(name);
+        let newTask = task(title, description, dueDate, priority);
         tasks.push(newTask);
     }
     
     function removeTask(name){
-        let taskIndex = tasks.findIndex(task => task.name == name);
+        let taskIndex = tasks.findIndex(task => task.getName() == name);
 
         if ( taskIndex == -1){
             console.log("Not found!");
